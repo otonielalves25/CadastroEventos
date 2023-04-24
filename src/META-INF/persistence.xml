@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="SistemaEventosPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>modelo.FormaPagamento</class>
+    <class>modelo.Participante</class>
+    <class>modelo.Evento</class>
+    <class>modelo.Usuario</class>
+    <class>modelo.Celula</class>
+    <class>modelo.Igreja</class>
+    <class>modelo.Pagamento</class>
+    <class>modelo.Caixa</class>
+    <class>modelo.Cadastro</class>
+    <class>modelo.Sequence</class>
+    <shared-cache-mode>ALL</shared-cache-mode>
+    <validation-mode>NONE</validation-mode>
+    <properties>
+      <property name="dialect" value="org.hibernate.dialect.SQLiteDialect"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:sqlite:dados\dados.db"/>
+      <property name="javax.persistence.jdbc.user" value=""/>
+      <property name="javax.persistence.jdbc.driver" value="org.sqlite.JDBC"/>
+      <property name="javax.persistence.jdbc.password" value=""/>
+      <property name="hibernate.show_sql" value="false"/>
+      <property name="hibernate.format_sql" value="true"/>
+      <property name="hibernate.connection.charSet" value="UTF-8"/>
+    </properties>
+  </persistence-unit>
+</persistence>
