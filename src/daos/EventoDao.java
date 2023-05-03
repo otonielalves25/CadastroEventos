@@ -68,7 +68,7 @@ public class EventoDao {
     }
 
     // RETORNA POR ID //////////////////////////////////////////
-    public Evento retornaPorId(int id) {
+    public Evento getPorId(int id) {
         em = getEM();
         Evento obj = em.find(Evento.class, id);
         em.close();
@@ -84,16 +84,6 @@ public class EventoDao {
         return lista;
     }
 //
-//    // RETORNA LISTAGEM DE TUDO  ////////////////////////////////
-//    public List<Acesso> getListagemLikeNome(String nome) {
-//        em = getEM();
-//        TypedQuery<Acesso> query = em.createQuery("SELECT e FROM Acesso e WHERE e.funcionarioId.nome LIKE ?1", Acesso.class);
-//        query.setParameter(1, "%" + nome + "%");
-//        List<Acesso> lista = query.getResultList();
-//        em.close();
-//        return lista;
-//    }
-//    
 
     public Evento getPorNome(String nome) {
         em = getEM();
@@ -102,6 +92,36 @@ public class EventoDao {
         List<Evento> lista = query.getResultList();
         em.close();
         return lista.size() > 0 ? lista.get(0) : null;
+    }
+
+    //    // RETORNA LISTAGEM DE TUDO  ////////////////////////////////
+    public List<Evento> getListagemLikeNome(String nome) {
+        em = getEM();
+        TypedQuery<Evento> query = em.createQuery("SELECT e FROM Evento e WHERE e.nome LIKE ?1", Evento.class);
+        query.setParameter(1, "%" + nome + "%");
+        List<Evento> lista = query.getResultList();
+        em.close();
+        return lista;
+    }
+    //    // RETORNA LISTAGEM DE TUDO  ////////////////////////////////
+
+    public List<Evento> getListagemLikeLocal(String nome) {
+        em = getEM();
+        TypedQuery<Evento> query = em.createQuery("SELECT e FROM Evento e WHERE e.localEvento LIKE ?1", Evento.class);
+        query.setParameter(1, "%" + nome + "%");
+        List<Evento> lista = query.getResultList();
+        em.close();
+        return lista;
+    }
+
+    //    // RETORNA LISTAGEM DE TUDO  ////////////////////////////////
+    public List<Evento> getListagemLikeData(String nome) {
+        em = getEM();
+        TypedQuery<Evento> query = em.createQuery("SELECT e FROM Evento e WHERE e.dataEvento LIKE ?1", Evento.class);
+        query.setParameter(1, "%" + nome + "%");
+        List<Evento> lista = query.getResultList();
+        em.close();
+        return lista;
     }
 
 }

@@ -187,6 +187,11 @@ public class FrmUsuario extends javax.swing.JFrame {
                 grelhaMouseReleased(evt);
             }
         });
+        grelha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                grelhaKeyReleased(evt);
+            }
+        });
         jScrollPane1.setViewportView(grelha);
         if (grelha.getColumnModel().getColumnCount() > 0) {
             grelha.getColumnModel().getColumn(0).setMinWidth(70);
@@ -543,6 +548,15 @@ public class FrmUsuario extends javax.swing.JFrame {
 
     private void grelhaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_grelhaMouseReleased
         // TODO add your handling code here:
+        carregaTela();
+    }//GEN-LAST:event_grelhaMouseReleased
+
+    private void grelhaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_grelhaKeyReleased
+        // TODO add your handling code here:
+        carregaTela();
+    }//GEN-LAST:event_grelhaKeyReleased
+
+    private void carregaTela() {
         try {
             if (grelha.getRowCount() > 0) {
 //
@@ -570,7 +584,7 @@ public class FrmUsuario extends javax.swing.JFrame {
 
         } catch (Exception e) {
         }
-    }//GEN-LAST:event_grelhaMouseReleased
+    }
 
     /**
      * @param args the command line arguments

@@ -10,9 +10,9 @@
     <class>modelo.Igreja</class>
     <class>modelo.Pagamento</class>
     <class>modelo.Caixa</class>
-    <class>modelo.Cadastro</class>
     <class>modelo.Sequence</class>
-    <shared-cache-mode>ALL</shared-cache-mode>
+    <class>modelo.Cadastro</class>
+    <shared-cache-mode>NONE</shared-cache-mode>
     <validation-mode>NONE</validation-mode>
     <properties>
       <property name="dialect" value="org.hibernate.dialect.SQLiteDialect"/>

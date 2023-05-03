@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -41,12 +43,15 @@ public class Pagamento implements Serializable {
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "valor")
     private Double valor;
-    @Column(name = "cadastro_id")
-    private Integer cadastroId;
-    @Column(name = "forma_pagamento_id")
-    private Integer formaPagamentoId;
-    @Column(name = "participante_id")
-    private Integer participanteId;
+    @JoinColumn(name = "evento", referencedColumnName = "id")
+    @ManyToOne
+    private Evento evento;
+    @JoinColumn(name = "forma_pagamento", referencedColumnName = "id")
+    @ManyToOne
+    private FormaPagamento formaPagamento;
+    @JoinColumn(name = "participante", referencedColumnName = "id")
+    @ManyToOne
+    private Participante participante;
 
     public Pagamento() {
     }
@@ -95,28 +100,28 @@ public class Pagamento implements Serializable {
         this.valor = valor;
     }
 
-    public Integer getCadastroId() {
-        return cadastroId;
+    public Evento getEvento() {
+        return evento;
     }
 
-    public void setCadastroId(Integer cadastroId) {
-        this.cadastroId = cadastroId;
+    public void setEvento(Evento evento) {
+        this.evento = evento;
     }
 
-    public Integer getFormaPagamentoId() {
-        return formaPagamentoId;
+    public FormaPagamento getFormaPagamento() {
+        return formaPagamento;
     }
 
-    public void setFormaPagamentoId(Integer formaPagamentoId) {
-        this.formaPagamentoId = formaPagamentoId;
+    public void setFormaPagamento(FormaPagamento formaPagamento) {
+        this.formaPagamento = formaPagamento;
     }
 
-    public Integer getParticipanteId() {
-        return participanteId;
+    public Participante getParticipante() {
+        return participante;
     }
 
-    public void setParticipanteId(Integer participanteId) {
-        this.participanteId = participanteId;
+    public void setParticipante(Participante participante) {
+        this.participante = participante;
     }
 
     @Override

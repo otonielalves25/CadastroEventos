@@ -28,6 +28,9 @@ import javax.persistence.Table;
     @NamedQuery(name = "Igreja.findAll", query = "SELECT i FROM Igreja i")})
 public class Igreja implements Serializable {
 
+    @OneToMany(mappedBy = "igreja")
+    private List<Participante> participanteList;
+
     @OneToMany(mappedBy = "igrejaId")
     private List<Celula> celulaList;
 
@@ -164,6 +167,14 @@ public class Igreja implements Serializable {
 
     public void setCelulaList(List<Celula> celulaList) {
         this.celulaList = celulaList;
+    }
+
+    public List<Participante> getParticipanteList() {
+        return participanteList;
+    }
+
+    public void setParticipanteList(List<Participante> participanteList) {
+        this.participanteList = participanteList;
     }
 
 }

@@ -6,6 +6,7 @@
 package modelo;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,6 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -25,6 +27,12 @@ import javax.persistence.Table;
 @NamedQueries({
     @NamedQuery(name = "Evento.findAll", query = "SELECT e FROM Evento e")})
 public class Evento implements Serializable {
+
+    @OneToMany(mappedBy = "evento")
+    private List<Cadastro> cadastroList;
+
+    @OneToMany(mappedBy = "evento")
+    private List<Pagamento> pagamentoList;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -171,7 +179,23 @@ public class Evento implements Serializable {
 
     @Override
     public String toString() {
-        return "modelo.Evento[ id=" + id + " ]";
+        return  this.nome;
+    }
+
+    public List<Pagamento> getPagamentoList() {
+        return pagamentoList;
+    }
+
+    public void setPagamentoList(List<Pagamento> pagamentoList) {
+        this.pagamentoList = pagamentoList;
+    }
+
+    public List<Cadastro> getCadastroList() {
+        return cadastroList;
+    }
+
+    public void setCadastroList(List<Cadastro> cadastroList) {
+        this.cadastroList = cadastroList;
     }
     
 }

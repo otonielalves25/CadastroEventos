@@ -6,14 +6,18 @@
 package modelo;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -23,8 +27,13 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "participante")
 @NamedQueries({
-    @NamedQuery(name = "Participante.findAll", query = "SELECT p FROM Participante p")})
+@NamedQuery(name = "Participante.findAll", query = "SELECT p FROM Participante p order by p.nome")})
 public class Participante implements Serializable {
+
+    @Column(name = "celular")
+    private String celular;
+    @OneToMany(mappedBy = "participante")
+    private List<Cadastro> cadastroList;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -52,25 +61,38 @@ public class Participante implements Serializable {
     private String dataCadastro;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "gestante")
-    private Double gestante;
+    private Integer gestante;
     @Column(name = "cama_baixo")
-    private Double camaBaixo;
+    private Integer camaBaixo;
     @Column(name = "lactante")
-    private Double lactante;
+    private Integer lactante;
     @Column(name = "nome_contato")
     private String nomeContato;
     @Column(name = "telefone")
     private String telefone;
     @Column(name = "telefone_contato")
     private String telefoneContato;
-    @Column(name = "celula_id")
-    private Integer celulaId;
-    @Column(name = "igreja_id")
-    private Integer igrejaId;
     @Column(name = "foto")
     private String foto;
     @Column(name = "observacao")
     private String observacao;
+    @JoinColumn(name = "celula_id", referencedColumnName = "id")
+    @ManyToOne
+    private Celula celula;
+    @JoinColumn(name = "igreja_id", referencedColumnName = "id")
+    @ManyToOne
+    private Igreja igreja;
+   // private String celular;
+
+    public String getCelular() {
+        return celular;
+    }
+
+    public void setCelular(String celular) {
+        this.celular = celular;
+    }
+    
+    
 
     public Participante() {
     }
@@ -159,27 +181,27 @@ public class Participante implements Serializable {
         this.dataCadastro = dataCadastro;
     }
 
-    public Double getGestante() {
+    public Integer getGestante() {
         return gestante;
     }
 
-    public void setGestante(Double gestante) {
+    public void setGestante(Integer gestante) {
         this.gestante = gestante;
     }
 
-    public Double getCamaBaixo() {
+    public Integer getCamaBaixo() {
         return camaBaixo;
     }
 
-    public void setCamaBaixo(Double camaBaixo) {
+    public void setCamaBaixo(Integer camaBaixo) {
         this.camaBaixo = camaBaixo;
     }
 
-    public Double getLactante() {
+    public Integer getLactante() {
         return lactante;
     }
 
-    public void setLactante(Double lactante) {
+    public void setLactante(Integer lactante) {
         this.lactante = lactante;
     }
 
@@ -207,22 +229,6 @@ public class Participante implements Serializable {
         this.telefoneContato = telefoneContato;
     }
 
-    public Integer getCelulaId() {
-        return celulaId;
-    }
-
-    public void setCelulaId(Integer celulaId) {
-        this.celulaId = celulaId;
-    }
-
-    public Integer getIgrejaId() {
-        return igrejaId;
-    }
-
-    public void setIgrejaId(Integer igrejaId) {
-        this.igrejaId = igrejaId;
-    }
-
     public String getFoto() {
         return foto;
     }
@@ -237,6 +243,22 @@ public class Participante implements Serializable {
 
     public void setObservacao(String observacao) {
         this.observacao = observacao;
+    }
+
+    public Celula getCelula() {
+        return celula;
+    }
+
+    public void setCelula(Celula celula) {
+        this.celula = celula;
+    }
+
+    public Igreja getIgreja() {
+        return igreja;
+    }
+
+    public void setIgreja(Igreja igreja) {
+        this.igreja = igreja;
     }
 
     @Override
@@ -261,7 +283,16 @@ public class Participante implements Serializable {
 
     @Override
     public String toString() {
-        return "modelo.Participante[ id=" + id + " ]";
+        return this.nome;
+    }
+
+
+    public List<Cadastro> getCadastroList() {
+        return cadastroList;
+    }
+
+    public void setCadastroList(List<Cadastro> cadastroList) {
+        this.cadastroList = cadastroList;
     }
     
 }

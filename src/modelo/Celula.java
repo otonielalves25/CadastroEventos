@@ -6,6 +6,7 @@
 package modelo;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,6 +17,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -27,6 +29,9 @@ import javax.persistence.Table;
 @NamedQueries({
     @NamedQuery(name = "Celula.findAll", query = "SELECT c FROM Celula c")})
 public class Celula implements Serializable {
+
+    @OneToMany(mappedBy = "celula")
+    private List<Participante> participanteList;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -103,7 +108,15 @@ public class Celula implements Serializable {
 
     @Override
     public String toString() {
-        return "modelo.Celula[ id=" + id + " ]";
+        return this.nomeCelula;
+    }
+
+    public List<Participante> getParticipanteList() {
+        return participanteList;
+    }
+
+    public void setParticipanteList(List<Participante> participanteList) {
+        this.participanteList = participanteList;
     }
     
 }

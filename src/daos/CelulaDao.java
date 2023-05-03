@@ -12,7 +12,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
 
 import modelo.Celula;
-import modelo.Igreja;
 
 /**
  *

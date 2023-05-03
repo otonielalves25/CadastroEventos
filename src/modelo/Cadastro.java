@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -36,10 +38,12 @@ public class Cadastro implements Serializable {
     private String dataCadastro;
     @Column(name = "observacao")
     private String observacao;
-    @Column(name = "evento_id")
-    private Integer eventoId;
-    @Column(name = "participante_id")
-    private Integer participanteId;
+    @JoinColumn(name = "evento_id", referencedColumnName = "id")
+    @ManyToOne
+    private Evento evento;
+    @JoinColumn(name = "partipante_id", referencedColumnName = "id")
+    @ManyToOne
+    private Participante participante;
 
     public Cadastro() {
     }
@@ -72,20 +76,20 @@ public class Cadastro implements Serializable {
         this.observacao = observacao;
     }
 
-    public Integer getEventoId() {
-        return eventoId;
+    public Evento getEvento() {
+        return evento;
     }
 
-    public void setEventoId(Integer eventoId) {
-        this.eventoId = eventoId;
+    public void setEvento(Evento evento) {
+        this.evento = evento;
     }
 
-    public Integer getParticipanteId() {
-        return participanteId;
+    public Participante getParticipante() {
+        return participante;
     }
 
-    public void setParticipanteId(Integer participanteId) {
-        this.participanteId = participanteId;
+    public void setParticipante(Participante participante) {
+        this.participante = participante;
     }
 
     @Override

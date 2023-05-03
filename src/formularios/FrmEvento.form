@@ -250,7 +250,7 @@
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="6" rowCount="0">
                     <Column editable="false" title="C&#xd3;DIGO" type="java.lang.Object"/>
-                    <Column editable="true" title="DATA" type="java.lang.Object"/>
+                    <Column editable="false" title="DATA" type="java.lang.Object"/>
                     <Column editable="false" title="NOME EVENTO" type="java.lang.Object"/>
                     <Column editable="false" title="LOCAL" type="java.lang.Object"/>
                     <Column editable="false" title="VAGAS" type="java.lang.Object"/>
@@ -269,7 +269,7 @@
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="300" minWidth="-1" prefWidth="300" resizable="true">
+                    <Column maxWidth="260" minWidth="-1" prefWidth="260" resizable="true">
                       <Title/>
                       <Editor/>
                       <Renderer/>
@@ -284,7 +284,7 @@
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="100" minWidth="-1" prefWidth="100" resizable="true">
+                    <Column maxWidth="120" minWidth="-1" prefWidth="120" resizable="true">
                       <Title/>
                       <Editor/>
                       <Renderer/>
@@ -298,6 +298,7 @@
               </Properties>
               <Events>
                 <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="grelhaMouseReleased"/>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="grelhaKeyReleased"/>
               </Events>
             </Component>
           </SubComponents>
@@ -432,7 +433,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Cadastro de Eventos"/>
+            <Property name="text" type="java.lang.String" value="Ingressar Participante no Evenvo"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
